@@ -1,0 +1,24 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int num,a,b,count;
+        num = a = Integer.parseInt(br.readLine());
+        b = ((a/10+a%10)%10)+((a%10)*10);
+        count = 1;
+        
+        while(num!=b) {
+            count++;
+            a = b;
+            b = ((a/10+a%10)%10)+((a%10)*10);
+        }
+        
+        bw.write(count+"\n");
+        
+        bw.flush();
+        bw.close();
+    }
+}
