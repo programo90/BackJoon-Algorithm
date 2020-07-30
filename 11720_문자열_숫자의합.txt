@@ -1,0 +1,22 @@
+//count는 num의 자리수 1~100
+//num의 각 자리수 합을 출력
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int count = Integer.parseInt(br.readLine());
+        String str = br.readLine();
+        int sum = 0;
+        for(int i=0; i<count; i++) {
+            sum += Integer.parseInt(str.substring(i,i+1));
+        }
+        
+        bw.write(sum+"\n");
+        
+        bw.flush();
+    }
+}

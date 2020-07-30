@@ -1,0 +1,36 @@
+//셀프넘버
+//자연수 n을 n+n의 각 자리수 했을 때 결과를 n2라 한다.
+//n을 n2의 생성자 수 라고 부르고, 생성자가 없는 수를 셀프 넘버라 부른다.
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        boolean[] arr = new boolean[10001];
+        int num;
+        
+        for(int i=1; i<=10000;i++) {
+            num = ckSelfNum(i);    
+            if(num<=10000)
+                arr[num] = true;
+        }
+        
+        for(int i=1; i<=10000;i ++) {
+            if(!arr[i])
+                bw.write(i+"\n");
+        }
+        
+        bw.flush();
+    }
+    
+    public static int ckSelfNum(int constNum) {
+        int result = constNum;
+        while(constNum>0) {
+            result += (constNum%10);
+            constNum /= 10;
+        }
+        return result;
+    }
+}

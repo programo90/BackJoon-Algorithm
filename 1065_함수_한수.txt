@@ -1,0 +1,41 @@
+//한수
+//양의정수 n이 각 자리수가 등차수열을 이룰 때 이를 한수라 한다.
+//등차 수열 n2*2 = n1+n3
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int num = Integer.parseInt(br.readLine());
+        int count;
+        if(num<100)
+            count = num;
+        else {
+            count = 99;
+            for(int i=100; i<=num; i++)
+                count += isSequence(i);
+        }
+        
+        bw.write(count+"\n");
+        bw.flush();
+    }
+    
+    public static int isSequence(int n) {
+        int result = 0;
+        int n1, n2, n3;
+        while(n>=100) {
+            n1 = n%10;
+            n2 = (n/10)%10;
+            n3 = (n/100)%10;
+            if(n2*2 == n1+n3)
+                result = 1;
+            else
+                result = 0;
+            n/=10;
+        }
+        return result;
+    }
+}
