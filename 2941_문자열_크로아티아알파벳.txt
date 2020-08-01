@@ -1,0 +1,42 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String str = br.readLine();
+        int count = 0;
+        int i;
+        int length = str.length();
+        char c;
+        for(i = 0; i<length; i++) {
+            c = str.charAt(i);
+           if(c=='c') {
+                if(i<length-1 && (str.charAt(i+1)=='=' || str.charAt(i+1)=='-'))
+                    i++;
+            } else if(c=='d') {
+                if(i<length-1 && str.charAt(i+1)=='-')
+                    i++;
+                else if(i<length-2 && (str.charAt(i+1)=='z'&&str.charAt(i+2)=='='))
+                    i += 2;
+            } else if(c=='l') {
+                if(i<length-1 && str.charAt(i+1)=='j')
+                    i++;
+            } else if(c=='n') {
+                if(i<length-1 && str.charAt(i+1)=='j')
+                    i++;
+            } else if(c=='s') {
+                if(i<length-1 && str.charAt(i+1)=='=')
+                    i++;
+            } else if(c=='z') {
+                if(i<length-1 && str.charAt(i+1)=='=')
+                    i++;
+            }                
+            count++; 
+        }
+        bw.write(count+"\n");
+        
+        bw.flush();
+    } 
+}
