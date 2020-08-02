@@ -1,0 +1,22 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int fix = Integer.parseInt(st.nextToken());
+        int cost = Integer.parseInt(st.nextToken());
+        int price = Integer.parseInt(st.nextToken());
+        
+        if((price - cost)<=0) {
+            bw.write(-1+"\n");
+        } else {
+            bw.write((fix/(price-cost)+1)+"\n");      
+        }
+        
+        
+        bw.flush();
+    }
+}

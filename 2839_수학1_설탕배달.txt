@@ -1,0 +1,42 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int num = Integer.parseInt(br.readLine());
+        int a, b, c, d, count3, count5, result;
+        count5 = count3 = 0;
+        
+        if(num<5){
+            if(num==3)
+                result = 1;
+            else
+                result = -1;
+        } else {
+            a = num/5;
+            d = -1;
+            for(int i = a; i>=0; i--) {
+                b = i*5;
+                c = num - b;
+                d = c%3;
+                if(d==0) {
+                    count3 = c/3;
+                    count5 = i;
+                    break;
+                }
+            }
+            
+            if(d!=0)
+                result = -1;
+            else
+                result = count3 + count5;
+        }
+        
+        bw.write(result+"\n");
+        
+        
+        bw.flush();
+    }
+}

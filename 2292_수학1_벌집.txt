@@ -1,0 +1,28 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int num = Integer.parseInt(br.readLine());
+        bw.write(getOrder(num)+"\n");
+        
+        bw.flush();
+    }
+    
+    public static int getOrder(int num) {
+        int step = 0;
+        int begin = 0;
+        int end = 0;
+        int temp = 1;
+        while(!(num>=begin && num <=end)) {
+            begin = end + 1;
+            end = begin + temp - 1;
+            step++;
+            temp = 6*step;
+        }
+        
+        return step;
+    }
+}
