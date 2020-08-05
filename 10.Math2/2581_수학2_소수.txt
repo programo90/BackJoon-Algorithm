@@ -1,0 +1,43 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int begin = Integer.parseInt(br.readLine());
+        int end = Integer.parseInt(br.readLine());
+        int sum, lower;
+        sum = lower = 0;
+        for(int i = begin; i<=end; i++) {
+            if(isPrime(i)) {
+                sum += i;
+                if(lower==0) {
+                    lower = i;   
+                }
+            }
+                
+        }
+        
+        
+        if(sum==0) {
+            bw.write(-1+"\n");
+        } else {
+            bw.write(sum+"\n");
+            bw.write(lower+"\n");
+        }
+        
+        bw.flush();
+    }
+    
+    public static boolean isPrime(int n) {
+        if(n<2) {
+            return false;
+        }
+        for(int i=2; i*i<=n; i++) {
+            if(n%i==0)
+                return false;
+        }
+        return true;
+    }
+}
