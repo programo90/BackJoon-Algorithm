@@ -1,0 +1,20 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int num = Integer.parseInt(br.readLine());
+        int[] pbArr = new int[num+1];
+        pbArr[0] = 0;
+        if(num>0)
+            pbArr[1] = 1;
+        
+        for(int i=2; i<pbArr.length; i++) {
+            pbArr[i] = pbArr[i-2] + pbArr[i-1];
+        }
+        bw.write(pbArr[num]+"\n");
+        bw.flush();
+    }
+}

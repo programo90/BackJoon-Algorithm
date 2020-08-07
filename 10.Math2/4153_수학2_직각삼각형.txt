@@ -1,0 +1,47 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
+        
+        int[] p = new int[3];
+        
+        while(true) {
+            st = new StringTokenizer(br.readLine());
+            p[0] = Integer.parseInt(st.nextToken());
+            p[1] = Integer.parseInt(st.nextToken());
+            p[2] = Integer.parseInt(st.nextToken());
+            
+            if(p[0]==0 && p[1]==0 && p[2]==0) break;
+            
+            if(p[0]<=p[1]) {
+                if(p[1]>=p[2]) {
+                    switchTwoNum(p, 0, 1);
+                } else {
+                    switchTwoNum(p, 0, 2);
+                }
+            } else {
+                if(p[2]>=p[0])
+                    switchTwoNum(p, 0, 2);
+            }
+            
+            if(p[0]*p[0]==(p[1]*p[1]+p[2]*p[2]))
+                bw.write("right\n");
+            else
+                bw.write("wrong\n");
+            
+            
+        }
+        bw.flush();
+    }
+    
+    public static void switchTwoNum(int[] arr, int idx1, int idx2) {
+        int temp;
+        temp = arr[idx1];
+        arr[idx1] = arr[idx2];
+        arr[idx2] = temp;
+    }
+}
