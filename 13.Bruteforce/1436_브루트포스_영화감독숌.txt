@@ -1,0 +1,29 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int num = Integer.parseInt(br.readLine());
+        int counter = 665;
+        while(num>0) {
+            counter++;
+            num -= checkNum(counter);
+        }
+        
+        bw.write(counter+"\n");
+        bw.flush();
+    }
+    
+    static int checkNum(int n) {
+        while(n>=666) {
+            if(n%1000==666) {
+                return 1;
+            } else {
+                n /= 10;
+            }
+        }
+        return 0;
+    }
+}
