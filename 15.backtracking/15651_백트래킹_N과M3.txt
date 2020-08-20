@@ -1,0 +1,35 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        
+        String[] arr = new String[m];
+        StringBuilder sb = new StringBuilder();
+        
+        recur(arr,0,n,m,sb);
+        
+        bw.write(sb.toString());
+        bw.flush();
+    }
+    
+    static void recur(String[] arr, int depth, int n, int m, StringBuilder sb) {
+        if(depth == m) {
+            for(String str : arr) {
+                sb.append(str);
+            }
+            sb.append("\n");
+            return;
+        }
+        
+        for(int i=1; i<=n; i++) {
+            arr[depth] = i+" ";
+            recur(arr, depth+1, n, m, sb);
+        }
+    }
+}
