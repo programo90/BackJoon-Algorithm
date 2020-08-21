@@ -1,0 +1,34 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        
+        String[] arr = new String[m];
+        StringBuilder sb = new StringBuilder();
+        recur(n, 1, 0, m, sb, arr);
+        
+        bw.write(sb.toString());
+        bw.flush();
+    }
+    
+    public static void recur(int n, int beginIdx, int d, int m, StringBuilder sb, String[] arr) {
+        if(m==d) {
+            for(String str : arr) {
+                sb.append(str);
+            }
+            sb.append("\n");
+            return;
+        }
+        
+        for(int i = beginIdx; i<=n; i++) {
+            arr[d] = i+" ";
+            recur(n, i, d+1, m, sb, arr);
+        }
+    }
+}
